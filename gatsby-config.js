@@ -1,11 +1,23 @@
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Sample App for Infinite Scroll`,
+    description: `A small demo application to depict the use of infinite scroll.`,
+    author: `@amit_mash`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
-  plugins: [
+    // Enables the use of function URLs locally
+    developMiddleware: app => {
+      app.use(
+        "/.netlify/functions/",
+        createProxyMiddleware({
+          target: "http://localhost:9000",
+          pathRewrite: { "/.netlify/functions/": "" },
+        })
+      )
+    },
+    plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -35,4 +47,5 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+
 }

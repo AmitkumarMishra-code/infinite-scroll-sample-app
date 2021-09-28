@@ -1,28 +1,23 @@
-import * as React from "react"
+import React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import SEO from "../components/seo"
+import "bulma/css/bulma.min.css"
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    <SEO title="Home" />
+    <div className="has-text-centered" style={{ marginTop: "20%" }}>
+      <h1 className="is-size-2">Infinite Scroll Demo</h1>
+      <p className="is-size-5" style={{ marginTop: "2%" }}>
+        Click below to start loading infinite images!
+      </p>
+      <button className="button is-dark is-large" style={{ marginTop: "10%" }}>
+        <Link to="/gallery/" className="has-text-white">
+          Load
+        </Link>
+      </button>
+    </div>
   </Layout>
 )
 
